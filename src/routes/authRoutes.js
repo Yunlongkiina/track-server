@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 
 router.post('/signup',async (req, res)=>{
     const {email, password} = req.body;
+    console.log(req.body);
     try{
         const user = new User({email, password});
         await user.save();
@@ -21,6 +22,7 @@ router.post('/signup',async (req, res)=>{
 
 router.post('/signin', async (req, res)=>{
     const {email, password} = req.body;
+
     if(!email || !password){
         return res.status(422).send({error:'Provide email and password!'});
     }
